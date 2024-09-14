@@ -16,22 +16,22 @@ function start() {
   const list = new DoublyLinkedList();
 
 //   list.addNodeLast(node1);
-//   list.addNodeLast(node2);
-//   list.addNodeLast(node4);
-// //     list.addNodeFirst(node3)
-//     // list.addNodeFirst(node2)
-//     list.addNodeFirst(node1)
+list.addNodeFirst(node3)
+list.addNodeFirst(node4);
+list.addNodeFirst(node2);
+list.addNodeFirst(node1)
+    // list.addNodeFirst(node2)
   //   list.tail = node3;
-  ;
 //   list.addNodeLast(list.removeLast());
   list.dumpList();
-  list.swapNodes(node5,node1)
+//   list.swapNodes(node5,node1)
 //   list.insertAfterNode(node5, node1)
 //   list.insertAfterNode(node5, node4)
 //   list.insertBeforeNode(node5, node1)
 //   list.insertBeforeNode(node5, node4)
   list.dumpList();
   console.log(list.size());
+//   list.get(1)
   
 
   window.list = list;

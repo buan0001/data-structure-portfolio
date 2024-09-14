@@ -15,19 +15,74 @@ export default class DoublyLinkedList {
     this.addNodeFirst(newNode);
   }
   get(index) {
-    return; // element at index
+    const node = this.nodeAt(index);
+    return node?.data ? node.data : undefined;
   }
-  indexOf(data) {}
-  insertAfter(index, data) {}
-  insertBefore(index, data) {}
+
+  indexOf(data) {
+    let index = 0;
+    let current = this.head;
+    while (current) {
+      if (current.data === data) {
+        return index;
+      }
+      index++;
+      current = current.next;
+    }
+    return -1;
+  }
+
+  insertAfter(index, data) {
+    const preExisting = this.nodeAt(index);
+    if (preExisting) {
+      this.insertAfterNode(new Node(data), preExisting);
+    } else {
+      console.log("no node found at the index");
+      return;
+    }
+  }
+
+  insertBefore(index, data) {
+    const preExisting = this.nodeAt(index);
+    if (preExisting) {
+      this.insertBeforeNode(new Node(data), preExisting);
+    } else {
+      console.log("no node found at the index");
+      return;
+    }
+  }
+
   first() {
     return this.head;
   }
   last() {
     return this.tail;
   }
-  remove(data) {}
-  removeIndex(index) {}
+
+  getNode(data) {
+    let current = this.head;
+    while (current) {
+      if (current.data == data) {
+        return current;
+      }
+      current = current.next;
+    }
+    return current;
+  }
+
+  remove(data) {
+    const foundNode = this.getNode(data);
+    if (foundNode) {
+      this.removeNode(foundNode);
+    }
+  }
+
+  removeIndex(index) {
+    const foundNode = this.nodeAt(index);
+    if (foundNode) {
+      this.removeNode(foundNode);
+    }
+  }
 
   removeFirst() {
     const oldHead = this.head;
@@ -118,26 +173,25 @@ export default class DoublyLinkedList {
     } else if (existingNode == this.tail) {
       this.removeLast();
     } else {
-      let current = this.head;
-      while (current) {
-        if (current == existingNode) {
-          // Change the previous and the next nodes to point at eachother instead of pointing to the current node - bam, current is gone
-          current.next.prev = current.prev;
-          current.prev.next = current.next;
-        }
-        current = this.getNext(current);
-      }
+      // Change the previous and the next nodes to point at eachother instead of pointing to the current node - bam, current is gone
+      current.next.prev = current.prev;
+      current.prev.next = current.next;
     }
   }
 
   nodeAt(index) {
-    return; // node at index
+    let current = this.head;
+    for (let i = 0; i < index; i++) {
+      if (!current) return current;
+      current = current.next;
+    }
+    return current;
   }
 
   swapNodes(nodeA, nodeB) {
     const aData = nodeA.data;
     nodeA.data = nodeB.data;
-    nodeB.data = aData
+    nodeB.data = aData;
 
     // IGNORE THIS: Made by silly
 
@@ -205,9 +259,9 @@ export default class DoublyLinkedList {
   size() {
     let counter = 0;
     let current = this.head;
-    while (current){
-        counter++;
-        current = current.next;
+    while (current) {
+      counter++;
+      current = current.next;
     }
     return counter;
   }
