@@ -14,6 +14,9 @@ function main() {
     console.log("Node:", node);
   }
 
+  console.log("Size of list:", testq.size());
+  
+
   console.log("\nDequeue:");
   testq.dequeue();
   testq.dumpList();
@@ -21,7 +24,7 @@ function main() {
   for (let i = 0; i < 5; i++) {
     testq.dequeue();
   }
-  console.log(`\nHead after adding abc: ${testq.head}`);
+  console.log(`\nHead after adding emptying list: ${testq.head}`);
   console.log(`Tail after adding abc: ${testq.tail}\n`);
   testq.dumpList();
 }
