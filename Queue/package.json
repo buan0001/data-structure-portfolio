@@ -1,0 +1,12 @@
+{
+  "name": "queue",
+  "version": "1.0.0",
+  "description": "queue data structure",
+  "main": "queue.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
