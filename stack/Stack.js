@@ -11,7 +11,9 @@ export default class Stack {
 
   pop() {
     const prev = this.tail;
-    this.tail = prev.next;
+    if (prev){
+      this.tail = prev.next;
+    }
 
     return prev;
   }
