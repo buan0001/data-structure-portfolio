@@ -11,7 +11,9 @@ export default class Stack {
 
   pop() {
     const prev = this.tail;
-    this.tail = prev.next;
+    if (prev) {
+      this.tail = prev.next;
+    }
 
     return prev;
   }
@@ -38,13 +40,22 @@ export default class Stack {
 
     while (currentIndex < index) {
       currentIndex++;
-      if (current == null){
+      if (current == null) {
         return;
       }
       current = current.next;
     }
 
     return current;
+  }
+
+  dumpList() {
+    let current = this.tail;
+    while (current) {
+      console.log(current);
+
+      current = current.next;
+    }
   }
 }
 
