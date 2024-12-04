@@ -23,6 +23,7 @@ export default class Tree {
       console.log("Empty tree");
     }
   }
+
   addValue(value) {
     const maxChildren = 4; // Arbitrary value to decide whether we should add the value to the current node or find a new one
 
@@ -45,6 +46,7 @@ export default class Tree {
       this.root = new Node(value);
     }
   }
+  
   findValue(value) {
     // console.log("finding value:",);
 
